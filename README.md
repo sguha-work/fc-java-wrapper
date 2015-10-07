@@ -34,7 +34,8 @@ Following parameters can be used in the constructor in the order as they are des
 ##### Methods under Chart class
 ###### **Render**
 Public method to generate html code for rendering chart. This function assumes that you've already included the FusionCharts JavaScript library in your page.
-
+##### Contributors
+Sahasrangshu Guha, Subhasis Ghosal
 ###License
 
 **FUSIONCHARTS:**
