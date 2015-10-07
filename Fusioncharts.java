@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.example;
-
 /**
  *
- * @author sguha
+ * @Contributors Sahasrangshu Guha, Subhasis Ghosal
  */
 public class Fusioncharts {
     private String constructorTemplate = "<script type=\"text/javascript\">FusionCharts.ready(function () {new FusionCharts(__constructorOptions__);});</script>";
@@ -25,11 +18,7 @@ public class Fusioncharts {
             this.chartOptions[6] = "\""+dataSource+"\"";
         } else {
             this.chartOptions[6] = "__dataSource__";
-            if(this.chartOptions[5] == "json") {
-                this.chartDataSource = dataSource.replaceAll("\n", "");
-            } else {
-                this.chartDataSource = dataSource.replaceAll("\n", "");
-            }
+            this.chartDataSource = dataSource.replaceAll("\n", "");
         }
     }
     private String jsonEncode(String[] data){
@@ -44,7 +33,7 @@ public class Fusioncharts {
             if("json".equals(this.chartOptions[5])) {
                 outputHTML = this.constructorTemplate.replace("__constructorOptions__", this.jsonEncode(this.chartOptions).replace("__dataSource__",this.chartDataSource))+this.renderTemplate.replace("__chartId__", this.chartOptions[0]);
             } else {
-                outputHTML = this.constructorTemplate.replace("__constructorOptions__", this.jsonEncode(this.chartOptions).replace("__dataSource__",this.chartDataSource))+this.renderTemplate.replace("__chartId__", this.chartOptions[0]);
+                outputHTML = this.constructorTemplate.replace("__constructorOptions__", this.jsonEncode(this.chartOptions).replace("__dataSource__","\'"+this.chartDataSource+"\'"))+this.renderTemplate.replace("__chartId__", this.chartOptions[0]);
             }
         }
         return outputHTML;
