@@ -8,6 +8,7 @@
  *
  * @author sguha
  */
+import com.google.gson.Gson;
 public class Fusioncharts {
     private String constructorTemplate = "<script type=\"text/javascript\">FusionCharts.ready(function () {new FusionCharts(__constructorOptions__);});</script>";
     private String renderTemplate = "<script type=\"text/javascript\">FusionCharts.ready(function () {                FusionCharts(\"__chartId__\").render();});</script>";
@@ -31,15 +32,19 @@ public class Fusioncharts {
             }
         }
     }
+    private String jsonEncode(String[] data){
+        String json = new Gson().toJson(data); // anyObject = List<Bean>, Map<K, Bean>, Bean, String, etc..
+        return json;
+    }
     public String render() {//strpos($this->chartOptions["dataFormat"], "url")
         String outputHTML;
         if(this.chartOptions[5].contains("url")) {
-            outputHTML = str_replace("__constructorOptions__", json_encode($this->chartOptions), $this->constructorTemplate).str_replace("__chartId__", $this->chartOptions["id"], $this->renderTemplate);    
+            outputHTML = this.constructorTemplate.replace("__constructorOptions__", this.jsonEncode(this.chartOptions))+this.renderTemplate.replace("__chartId__", this.chartOptions[0]);//str_replace("__constructorOptions__", json_encode($this->chartOptions), $this->constructorTemplate).str_replace("__chartId__", $this->chartOptions["id"], $this->renderTemplate);    
         } else {
             if(this.chartOptions[5] == "json") {
-                outputHTML = str_replace("__constructorOptions__", str_replace("\"__dataSource__\"",$this->chartDataSource,json_encode($this->chartOptions)), $this->constructorTemplate).str_replace("__chartId__", $this->chartOptions["id"], $this->renderTemplate);                    
+                outputHTML = this.constructorTemplate.replace("__constructorOptions__", this.jsonEncode(this.chartOptions).replace("\"__dataSource__\"",this.chartDataSource))+this.renderTemplate.replace("__chartId__", this.chartOptions[0]);//str_replace("__constructorOptions__", str_replace("\"__dataSource__\"",$this->chartDataSource,json_encode($this->chartOptions)), $this->constructorTemplate).str_replace("__chartId__", $this->chartOptions["id"], $this->renderTemplate);                    
             } else {
-                outputHTML = str_replace("__constructorOptions__", str_replace("__dataSource__",$this->chartDataSource,json_encode($this->chartOptions)), $this->constructorTemplate).str_replace("__chartId__", $this->chartOptions["id"], $this->renderTemplate);                    
+                outputHTML = this.constructorTemplate.replace("__constructorOptions__", this.jsonEncode(this.chartOptions).replace("__dataSource__",this.chartDataSource))+this.renderTemplate.replace("__chartId__", this.chartOptions[0]);//str_replace("__constructorOptions__", str_replace("__dataSource__",$this->chartDataSource,this.jsonEncode($this->chartOptions)), $this->constructorTemplate).str_replace("__chartId__", $this->chartOptions["id"], $this->renderTemplate);                    
             }
         }
         return outputHTML;
