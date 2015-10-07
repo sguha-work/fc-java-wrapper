@@ -13,7 +13,7 @@ Using this JSP wrapper we can generate the required JavaScript and HTML code as 
 
 
 ### Installation
- * Include FusionCharts.JAVA file in your project.
+ * Include FusionCharts.java file in your project.
  * Start using methods and classes available under **"FusionCharts.Charts"** namespace to generate Charts in your project.
  
 ### Usage
