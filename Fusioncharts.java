@@ -22,19 +22,18 @@ public class Fusioncharts {
         this.chartOptions[4] = type;
         this.chartOptions[5] = dataFormat;
         if(this.chartOptions[5].contains("url")) {
-            this.chartOptions[6] = dataSource;
+            this.chartOptions[6] = "\""+dataSource+"\"";
         } else {
             this.chartOptions[6] = "__dataSource__";
             if(this.chartOptions[5] == "json") {
-                this.chartDataSource = chartDataSource.replaceAll("\\", "").replaceAll("\n", "");//stlr_replace("\n", "", stripslashes(chartDataSource));
+                this.chartDataSource = dataSource.replaceAll("\n", "");
             } else {
-                this.chartDataSource = chartDataSource.replaceAll("\n", "");//str_replace("\n", "", chartDataSource);
+                this.chartDataSource = dataSource.replaceAll("\n", "");
             }
         }
     }
     private String jsonEncode(String[] data){
-        String json = "{type: \""+this.chartOptions[4]+"\",renderAt: \""+this.chartOptions[3]+"\",width: \""+this.chartOptions[1]+"\",height: \""+this.chartOptions[2]+"\",dataFormat: \""+this.chartOptions[5]+"\",id: \""+this.chartOptions[0]+"\",dataSource: \""+this.chartOptions[6]+"\"}";
-
+        String json = "{type: \""+this.chartOptions[4]+"\",renderAt: \""+this.chartOptions[3]+"\",width: \""+this.chartOptions[1]+"\",height: \""+this.chartOptions[2]+"\",dataFormat: \""+this.chartOptions[5]+"\",id: \""+this.chartOptions[0]+"\",dataSource: "+this.chartOptions[6]+"}";
         return json;
     }
     public String render() {
@@ -43,7 +42,7 @@ public class Fusioncharts {
             outputHTML = this.constructorTemplate.replace("__constructorOptions__", this.jsonEncode(this.chartOptions))+this.renderTemplate.replace("__chartId__", this.chartOptions[0]);
         } else {
             if("json".equals(this.chartOptions[5])) {
-                outputHTML = this.constructorTemplate.replace("__constructorOptions__", this.jsonEncode(this.chartOptions).replace("\"__dataSource__\"",this.chartDataSource))+this.renderTemplate.replace("__chartId__", this.chartOptions[0]);
+                outputHTML = this.constructorTemplate.replace("__constructorOptions__", this.jsonEncode(this.chartOptions).replace("__dataSource__",this.chartDataSource))+this.renderTemplate.replace("__chartId__", this.chartOptions[0]);
             } else {
                 outputHTML = this.constructorTemplate.replace("__constructorOptions__", this.jsonEncode(this.chartOptions).replace("__dataSource__",this.chartDataSource))+this.renderTemplate.replace("__chartId__", this.chartOptions[0]);
             }
