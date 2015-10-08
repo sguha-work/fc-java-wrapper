@@ -24,12 +24,17 @@ Following parameters can be used in the constructor in the order as they are des
 
 | Parameter | Type | Description |
 |:-------|:----------:| :------|
-| chartType | `String` | The type of chart that you intend to plot. e.g. `Column3D`, `Column2D`, `Pie2D` etc.|
+| chartType | `String` | The type of chart that you intend to plot. e.g. "column3D", "column2D" etc.|
 |chartId | `String` | Id for the chart, using which it will be recognized in the HTML page. Each chart on the page needs to have a unique Id.|
-|chartWidth | `String` | Intended width for the chart (in pixels). e.g. `400`|
-|chartHeight | `String` | Intended height for the chart (in pixels). e.g. `300`|
-|dataFormat | `String` | Type of the data that is given to the chart. e.g. `json`, `jsonurl`, `xml`, `xmlurl`|
-|dataSource | `String` | Actual data for the chart. e.g. `{"chart":{},"data":[{"label":"Jan","value":"420000"}]}`|
+|chartWidth | `String` | Intended width for the chart (in pixels). e.g. 400|
+|chartHeight | `String` | Intended height for the chart (in pixels). e.g. 300|
+|dataFormat | `String` | Type of the data that is given to the chart. e.g. "json", "jsonurl", "xml", "xmlurl"|
+|dataSource | `String` | Actual data for the chart. e.g. "{\"chart\":{},\"data\":[{\"label\":\"Jan\",\"value\":\"420000\"}]}"|
+
+##### Example of constructor
+```java
+Fusioncharts fObject = new Fusioncharts("column2d","chart1",600,400,"chart","json","{\"chart\":{},\"data\":[{\"label\":\"Jan\",\"value\":\"420000\"}]}");
+```
 
 ##### Methods under Chart class
 ###### **Render**
