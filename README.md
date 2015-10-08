@@ -33,7 +33,7 @@ Following parameters can be used in the constructor in the order as they are des
 
 ##### Example of constructor
 ```java
-Fusioncharts fObject = new Fusioncharts("column2d","chart1",600,400,"chart","json","{\"chart\":{},\"data\":[{\"label\":\"Jan\",\"value\":\"420000\"}]}");
+FusionCharts fObject = new FusionCharts("column2d","chart1",600,400,"chart","json","{\"chart\":{},\"data\":[{\"label\":\"Jan\",\"value\":\"420000\"}]}");
 ```
 
 ##### Methods under Chart class
