@@ -14,7 +14,7 @@ Using this JSP wrapper we can generate the required JavaScript and HTML code as 
 
 ### Installation
  * Include FusionCharts.java file in your project.
- * Start using methods and classes available under **"FusionCharts.Charts"** namespace to generate Charts in your project.
+ * Start using methods and classes available under **"FusionCharts"**.
  
 ### Usage
 ##### Chart Class (FusionCharts)

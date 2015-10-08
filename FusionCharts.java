@@ -18,8 +18,16 @@ public class FusionCharts {
             this.chartOptions[6] = "\""+dataSource+"\"";
         } else {
             this.chartOptions[6] = "__dataSource__";
-            this.chartDataSource = dataSource.replaceAll("\n", "");
+            this.chartDataSource = this.addSlashes(dataSource.replaceAll("\n", ""));
         }
+    }
+    private String addSlashes(String str) {
+        str = str.replaceAll("\\\\", "\\\\\\\\");
+        str = str.replaceAll("\\n", "\\\\n");
+        str = str.replaceAll("\\r", "\\\\r");
+        str = str.replaceAll("\\00", "\\\\0");
+        str = str.replaceAll("'", "\\\\'");
+        return str;
     }
     private String jsonEncode(String[] data){
         String json = "{type: \""+this.chartOptions[4]+"\",renderAt: \""+this.chartOptions[3]+"\",width: \""+this.chartOptions[1]+"\",height: \""+this.chartOptions[2]+"\",dataFormat: \""+this.chartOptions[5]+"\",id: \""+this.chartOptions[0]+"\",dataSource: "+this.chartOptions[6]+"}";
