@@ -55,7 +55,7 @@ FusionCharts lineChart = new FusionCharts(
                         "chart",// chartContainer
                         "json",// dataFormat
                         "{\"chart\":{\"caption\":\"Harry\'sSuperMart\",\"subCaption\":\"Top5storesinlastmonthbyrevenue\",\"numberPrefix\":\"$\",\"theme\":\"ocean\"			},			\"data\":			[{\"label\":\"BakersfieldCentral\",\"value\":\"880000\"				},				{\"label\":\"GardenGrooveharbour\",\"value\":\"730000\"				},				{\"label\":\"LosAngelesTopanga\",\"value\":\"590000\"				},				{\"label\":\"Compton-RanchoDom\",\"value\":\"520000\"	},	{\"label\":\"DalyCitySerramonte\",\"value\":\"330000\"	}]}",
-                        "{\"events\": {			\"rendered\": function (e) {alert(\"x\");}}}"
+                        "{\"events\": {			\"rendered\": function (e) {alert(\"Chart rendered\");}}}"
                     );
 ```
 ##### Methods under Chart class
