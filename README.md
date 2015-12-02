@@ -31,12 +31,33 @@ Following parameters can be used in the constructor in the order as they are des
 |chartContainer | `String` | Id for the chart container DOM. e.g. id of div|
 |dataFormat | `String` | Type of the data that is given to the chart. e.g. "json", "jsonurl", "xml", "xmlurl"|
 |dataSource | `String` | Actual data for the chart. e.g. "{\"chart\":{},\"data\":[{\"label\":\"Jan\",\"value\":\"420000\"}]}"|
+|extra | `String` | Events and other attributes if any for the chart. This parameter is optional e.g. "{\"events\": {			\"rendered\": function (e) {alert(\"Chart rendered\");}}}"|
+
 
 ##### Example of constructor
 ```java
-FusionCharts fObject = new FusionCharts("column2d","chart1",600,400,"chart","json","{\"chart\":{},\"data\":[{\"label\":\"Jan\",\"value\":\"420000\"}]}");
+// Without event attribute
+FusionCharts lineChart = new FusionCharts(
+                        "column2d",// chartType
+                        "ex1",// chartId
+                        "600","400",// chartWidth, chartHeight
+                        "chart",// chartContainer
+                        "json",// dataFormat
+                        "{\"chart\":{\"caption\":\"Harry\'sSuperMart\",\"subCaption\":\"Top5storesinlastmonthbyrevenue\",\"numberPrefix\":\"$\",\"theme\":\"ocean\"			},			\"data\":			[{\"label\":\"BakersfieldCentral\",\"value\":\"880000\"				},				{\"label\":\"GardenGrooveharbour\",\"value\":\"730000\"				},				{\"label\":\"LosAngelesTopanga\",\"value\":\"590000\"				},				{\"label\":\"Compton-RanchoDom\",\"value\":\"520000\"	},	{\"label\":\"DalyCitySerramonte\",\"value\":\"330000\"	}]}"
+                    );
 ```
-
+```java
+// With event attribute
+ FusionCharts lineChart = new FusionCharts(
+                        "column2d",// chartType
+                        "ex1",// chartId
+                        "600","400",// chartWidth, chartHeight
+                        "chart",// chartContainer
+                        "json",// dataFormat
+                        "{\"chart\":{\"caption\":\"Harry\'sSuperMart\",\"subCaption\":\"Top5storesinlastmonthbyrevenue\",\"numberPrefix\":\"$\",\"theme\":\"ocean\"			},			\"data\":			[{\"label\":\"BakersfieldCentral\",\"value\":\"880000\"				},				{\"label\":\"GardenGrooveharbour\",\"value\":\"730000\"				},				{\"label\":\"LosAngelesTopanga\",\"value\":\"590000\"				},				{\"label\":\"Compton-RanchoDom\",\"value\":\"520000\"	},	{\"label\":\"DalyCitySerramonte\",\"value\":\"330000\"	}]}",
+                        "{\"events\": {			\"rendered\": function (e) {alert(\"x\");}}}"
+                    );
+```
 ##### Methods under Chart class
 ###### **Render**
 Public method to generate html code for rendering chart. This function assumes that you've already included the FusionCharts JavaScript library in your page.
