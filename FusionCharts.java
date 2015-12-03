@@ -1,6 +1,6 @@
 /**
  *
- * @Contributors Sahasrangshu Guha, Subhasis Ghosal
+ * @Contributors Sahasrangshu Guha, Subhasis Ghosal, Suvradip Saha
  */
 public class FusionCharts {
     private String constructorTemplate = "<script type=\"text/javascript\">FusionCharts.ready(function () {new FusionCharts(__constructorOptions__);});</script>";
@@ -35,7 +35,13 @@ public class FusionCharts {
         str = str.replaceAll("\\n", "\\\\n");
         str = str.replaceAll("\\r", "\\\\r");
         str = str.replaceAll("\\00", "\\\\0");
+        str = str.replaceAll("u003d", "=");
         str = str.replaceAll("'", "\\\\'");
+        str = str.replaceAll("\\\\", "");
+        str = str.replaceAll("\"\\{", "{");
+        str = str.replaceAll("\"\\[", "[");
+        str = str.replaceAll("\\}\\]\"", "}]");
+        str = str.replaceAll("\"\\}\"", "\"}");
         return str;
     }
     private String jsonEncode(){
